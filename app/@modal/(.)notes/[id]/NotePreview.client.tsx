@@ -23,17 +23,18 @@ export default function NotePreview() {
     
 	
 	
-    return (<div className={css.container}>
-	<div className={css.item}>
-	  <div className={css.header}>
-				<h2>{ data?.title }</h2>
-	  </div>
-      		<p className={css.tag}>{ data?.tag }</p>
+    return (
+	<div className={css.container}>
+		<div className={css.item}>
+		<div className={css.header}>
+			<h2>{ data?.title }</h2>
+		</div>
+			<p className={css.tag}>{ data?.tag }</p>
 			<p className={css.content}>{  data?.content}</p>
-	  		<p className={css.date}>
-				{data?.createdAt ? new Date(data.createdAt).toUTCString() : ''}</p>
-            <button className={css.backBtn} onClick={close}>Go Back</button>
+			<p className={css.date}>
+			{data?.createdAt ? new Date(data.createdAt).toUTCString() : ''}</p>
+			<button className={css.backBtn} onClick={close}>Go Back</button>
+		</div>
 	</div>
-</div>
 )
 }
