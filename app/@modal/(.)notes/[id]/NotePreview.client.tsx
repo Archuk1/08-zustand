@@ -1,4 +1,5 @@
 'use client'
+import Modal from '@/components/Modal/Modal'
 import css from './NotePreview.module.css'
 import { fetchNoteById } from '@/lib/api'
 import { useQuery } from '@tanstack/react-query'
@@ -24,17 +25,19 @@ export default function NotePreview() {
 	
 	
     return (
-	<div className={css.container}>
-		<div className={css.item}>
-		<div className={css.header}>
-			<h2>{ data?.title }</h2>
+	<Modal onClose={close}>
+		<div className={css.container}>
+			<div className={css.item}>
+			<div className={css.header}>
+				<h2>{ data?.title }</h2>
+			</div>
+				<p className={css.tag}>{ data?.tag }</p>
+				<p className={css.content}>{  data?.content}</p>
+				<p className={css.date}>
+				{data?.createdAt ? new Date(data.createdAt).toUTCString() : ''}</p>
+				<button className={css.backBtn} onClick={close}>Go Back</button>
+			</div>
 		</div>
-			<p className={css.tag}>{ data?.tag }</p>
-			<p className={css.content}>{  data?.content}</p>
-			<p className={css.date}>
-			{data?.createdAt ? new Date(data.createdAt).toUTCString() : ''}</p>
-			<button className={css.backBtn} onClick={close}>Go Back</button>
-		</div>
-	</div>
+	</Modal>
 )
 }
