@@ -46,21 +46,21 @@ export default function NoteForm (){
     },
   });
 
-    const handlSubmit = (e: React.FormEvent) => {
+    const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     mutate(draft)
    }
 
-   const handlCancel = () => {
+   const handleCancel = () => {
     router.push("/notes/filter/All")
    }
 
     return(
        
-            <form className={css.form} onSubmit={handlSubmit}>
+            <form className={css.form} onSubmit={handleSubmit}>
         <div className={css.formGroup}>
             <label htmlFor="title">Title</label>
-            <input id="title" type="text" name="title" className={css.input} defaultValue={draft?.title} onChange={handleChange}/>
+            <input id="title" type="text" name="title" className={css.input} value={draft?.title} onChange={handleChange}/>
         </div>
 
         <div className={css.formGroup}>
@@ -70,14 +70,14 @@ export default function NoteForm (){
             name="content"
             rows={8}
             className={css.textarea}
-            defaultValue={draft?.content}
+            value={draft?.content}
             onChange={handleChange}
             />
         </div>
 
         <div className={css.formGroup}>
             <label htmlFor="tag">Tag</label>
-            <select id="tag" name="tag" className={css.select} defaultValue={draft?.tag} onChange={handleChange}>
+            <select id="tag" name="tag" className={css.select} value={draft?.tag} onChange={handleChange}>
             <option value="">Select a tag</option>
             <option value="Todo">Todo</option>
             <option value="Work">Work</option>
@@ -88,7 +88,7 @@ export default function NoteForm (){
         </div>
 
         <div className={css.actions}>
-            <button type="button" className={css.cancelButton} onClick={handlCancel}>
+            <button type="button" className={css.cancelButton} onClick={handleCancel}>
             Cancel
             </button>
             <button
